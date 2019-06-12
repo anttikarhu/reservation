@@ -18,6 +18,8 @@ Practise project for Spring Boot web application. It will be a FHIR appointment 
 
 - I used the Spring Initialzr to create an application template. I added some dependencies at the start:
     - Spring Security
+        - This adds a default login page
+        - The username is `user`, and password is printed to console log upon statup
     - Spring Web Starter
     - Spring Boot Devtools
     - Along with those, came also Embedded Tomcat and test utilities.
@@ -39,7 +41,9 @@ Practise project for Spring Boot web application. It will be a FHIR appointment 
         - Resource Provider defines a FHIR endpoint and it's operations
         - Appointment provider was added to test out the API
     - `TomcatSettings` class was added too to allow one to use "|" character in requests (some FHIR parameters may use this)
-    
+- Then I commited the project to Github, and imported the project to Idea
+    - The project was imported to Idea from Git, the version control integration was messed up if I tried to use the initial Idea project after push to Github
+
 ## TODO
 
 - Add user interface
