@@ -31,7 +31,7 @@ Practise project for Spring Boot web application. It will be a FHIR appointment 
         - The server accepts autowired `IResourceProvider` as parameter
         - The server defines the _FHIR API level_ by calling it's super constructor
         - Also default encoding was set
-        - _Initialize method_ was added, and it registers the Resource Providers
+        - `initialize` method was added, and it registers the Resource Providers
         - Initialize also setups pretty printing for the API for browser usage, but this is optional
     - Server was configured by adding a `ServerConfiguration` class
         - It stores the server instance and resource providers
