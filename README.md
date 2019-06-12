@@ -50,6 +50,6 @@ Practise project for Spring Boot web application. It will be a FHIR appointment 
 - Customize login page
 - Display appointments for customer
 - Allow customer to cancel an appointment
-- Utilize the Spring Tools
+- Utilize the Spring Boot Devtools
     - When java code is changed, it would be nice to update the app on the fly
     - Update front on the fly when front code is updated
