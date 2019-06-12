@@ -44,6 +44,20 @@ Practise project for Spring Boot web application. It will be a FHIR appointment 
 - Then I commited the project to Github, and imported the project to Idea
     - The project was imported to Idea from Git, the version control integration was messed up if I tried to use the initial Idea project after push to Github
 
+### Day 2
+
+- I tried adding some web content
+- If only static web page is needed when the address is accessed, one can simply add `/static/index.html` under resources
+- Also tried adding Thymeleaf
+    - Added `Thymeleaf starter dependency`
+    - Added `IndexController`, which
+        - is decorated with `@Controller`,
+        - supplies with the html file name for a request path defined by `@GetMapping`
+        - and can provide parameters to the Thymeleaf template
+    - Added `resources/templates/index.html`
+- If Thymeleaf is added, and there is also static page with same name (index.html), Thymeleaf wins
+- Thymeleaf could be used to put some data from server side to page, even if front side framework is used, so I guess Thymeleaf will remain
+
 ## TODO
 
 - Add user interface
