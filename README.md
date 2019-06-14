@@ -44,7 +44,7 @@ Practise project for Spring Boot web application. It will be a FHIR appointment 
 - Then I commited the project to Github, and imported the project to Idea
     - The project was imported to Idea from Git, the version control integration was messed up if I tried to use the initial Idea project after push to Github
 
-### Day 2
+#### Later that day
 
 - I tried adding some web content
 - If only static web page is needed when the address is accessed, one can simply add `/static/index.html` under resources
@@ -57,6 +57,17 @@ Practise project for Spring Boot web application. It will be a FHIR appointment 
     - Added `resources/templates/index.html`
 - If Thymeleaf is added, and there is also static page with same name (index.html), Thymeleaf wins
 - Thymeleaf could be used to put some data from server side to page, even if front side framework is used, so I guess Thymeleaf will remain
+
+### Day 2
+
+- I started by installing `Yarn`
+- I created a new React application called "app" by typing `yarn create react-app app`
+    - It fetches all sorts of stuff, and installs them and creates a project structure
+    - After running with `yarn start`, browser screen was opened and the app is automatically refreshed when application files are changed
+- Then I added Bootstrap `yarn add bootstrap reactstrap`, and React router `yarn add react-router-dom`
+    - Bootstrap can be used by adding `import 'bootstrap/dist/css/bootstrap.min.css';` to `index.js`, 
+    - and importing desired components in `App.js`, for example: `import {Button} from 'reactstrap';` and `<Button color="success">Yes button</Button>`
+- Next thing is to integrate Spring Boot and React apps together somehow?
 
 ## TODO
 
