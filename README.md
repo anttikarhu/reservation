@@ -69,6 +69,14 @@ Practise project for Spring Boot web application. It will be a FHIR appointment 
     - and importing desired components in `App.js`, for example: `import {Button} from 'reactstrap';` and `<Button color="success">Yes button</Button>`
 - Next thing is to integrate Spring Boot and React apps together somehow?
 
+### Day 3
+
+- I tried to use the Reactjs app and the Spring Boot app in separate ports. It quickly proved to require too much hacks to get it working. Maybe the next step is to `eject` the Reactjs Yarn project, and integrate it with the Spring Boot Gradle project.
+- Problems encountered:
+    - Because the apps run in different ports, CORS must be disabled in both ends
+    - Even if I disabled them, Reactjs app seemed to receive only `Opaque responses`, which contain no data
+    - Because of this, I removed those changes and try to integrate Reactjs and Spring Boot apps together in the same port
+
 ## TODO
 
 - Add user interface
