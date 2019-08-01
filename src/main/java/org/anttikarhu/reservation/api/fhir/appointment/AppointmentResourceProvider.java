@@ -1,4 +1,4 @@
-package org.anttikarhu.reservation.appointment;
+package org.anttikarhu.reservation.api.fhir.appointment;
 
 import ca.uhn.fhir.rest.annotation.RequiredParam;
 import ca.uhn.fhir.rest.annotation.Search;

@@ -1,11 +1,11 @@
-package org.anttikarhu.reservation.fhir;
+package org.anttikarhu.reservation.api.fhir;
 
 import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.rest.api.EncodingEnum;
 import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.rest.server.RestfulServer;
 import ca.uhn.fhir.rest.server.interceptor.ResponseHighlighterInterceptor;
-import org.anttikarhu.reservation.appointment.AppointmentResourceProvider;
+import org.anttikarhu.reservation.api.fhir.appointment.AppointmentResourceProvider;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
 

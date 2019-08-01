@@ -1,4 +1,4 @@
-package org.anttikarhu.reservation.fhir;
+package org.anttikarhu.reservation.api.fhir;
 
 import org.springframework.boot.web.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
