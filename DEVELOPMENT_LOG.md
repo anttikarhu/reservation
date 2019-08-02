@@ -62,3 +62,80 @@
     - Because the apps run in different ports, CORS must be disabled in both ends
     - Even if I disabled them, Reactjs app seemed to receive only `Opaque responses`, which contain no data
     - Because of this, I removed those changes and try to integrate Reactjs and Spring Boot apps together in the same port
+
+## Day 4
+
+- Goal was to add Webpack to the project
+- It needed Node, so it was added to `build.gradle` as a plugin 
+```
+plugins {
+    ...
+    id "com.moowork.node" version "1.3.1"
+}
+```
+, and 
+```
+node {
+    download = true
+}
+```
+
+Then Webpack dependencies and npm tasks for Webpack were added too
+
+```
+"devDependencies": {
+    ...
+    "webpack": "^4.39.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.1"
+}
+    
+task webpackBuild(type: NpmTask) {
+	dependsOn npm_install
+
+	args = [
+			'run', 'webpack-build'
+	]
+}
+
+etc...
+```
+
+The arguments after `run` refer to scripts in `package.json` 
+
+```
+  "scripts": {
+    "webpack-start": "webpack-dev-server",
+    "webpack-watch": "webpack --watch -d",
+    "webpack-build": "webpack"
+  },
+```
+
+In `webpack.config.js` are configurations for example for React application entry point in
+ `entry` property, development server config in `devServer` property and build destination in `output` property.
+ 
+In `IndexController` the Webpack assets location is configured so Spring Boot application knows where to load:
+
+```
+@Controller
+public class IndexController {
+    @RequestMapping("/")
+    public String index(Model model) {
+        model.addAttribute("appName", "Reservation app");
+        model.addAttribute("scriptBundles", Collections.singletonList("http://localhost:8081/bundle.js"));
+        return "index";
+    }
+}
+```
+
+In `index.html` the React app tag is added, and the place where the app bundle is found 
+(as defined by Webpack dev server `contentBase` and output `filename`.
+ Because Spring Boot app runs in 8080 and Webpack in 8081, Webpack needs a `Access-Control-Allow-Origin` header in the config.
+
+```
+<div id="react"></div>
+
+<script src="http://localhost:8081/bundle.js"></script>
+```
+
+Next step would be to clean up the project a little, and make Webpack update the web app without need to refresh page after code changes.
