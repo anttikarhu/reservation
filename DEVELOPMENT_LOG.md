@@ -139,3 +139,58 @@ In `index.html` the React app tag is added, and the place where the app bundle i
 ```
 
 Next step would be to clean up the project a little, and make Webpack update the web app without need to refresh page after code changes.
+
+## Day 5 - Why this does not work?!?
+
+## #Uuh
+Finally, Hot Reload works \o/. There were lots of steps and back tracking. Here's what to do:
+
+### Webpack configuration
+- In webpack config you need to add an entry for hot loading: `entry: ['./src/main/js/index.js', "webpack/hot/dev-server"],`
+- Dev server needs a publicPath: for example `publicPath: 'http://locahost:8081/',`
+- `hot` option must be set
+- Output must have a public path, for example: `publicPath: 'http://localhost:8081/',`
+    - An absolute maybe needed, because otherwise hot loader tried to load hot loaded assets from 8080 instead of 8081
+- Webpack documentation states you need to add `HotModuleReplacementPlugin`, but hot loading _seems_ to work without it. 
+At least in this simple example. Left it there just in case. If something changes in Webpack, or if I'm wrong :) 
+
+### React hot reload support
+- New dependencies needed to package.json:
+    ``` 
+    ...
+    "react-hot-loader": "^4.12.10",
+    "@hot-loader/react-dom": "^16.8.6"
+    ...
+    ```
+- More on those later
+- Apps main component must be "heated":
+    ```
+    import { hot } from 'react-hot-loader/root';
+    ...
+    
+    class App extends React.Component {
+    ...
+    }
+    
+    export default hot(App);
+    ```
+- That enables one to use Hot reload insteaf of _Live reload_, which refreshes the whole page
+- To be compliant with some React features
+    - `require("react-hot-loader/patch");` must be added before React, for example in `index.js`
+    - `"@hot-loader/react-dom": "^16.8.6"` added as dependency
+    - Alias for react-dom added in webpack config:
+    ```
+    resolve: {
+           alias: {
+               'react-dom': '@hot-loader/react-dom'
+           }
+    }
+    ``` 
+- Lastly, one must not call `webpack` _and_ `webpack-dev-server` (aaargh), because then Webpack does both live and hot reload :D 
+
+### Now it works.
+After I run the `start:dev` npm task, and start the Spring Boot app, and alter some React code (for example in `SomeModule`),
+the rest of the web app stays and only that part is updated. If one turns the `hot` option off, live reload is done instead.
+
+### What next?
+Next it would be nice to get a production version bundled. Also style sheet stuff.
