@@ -142,7 +142,7 @@ Next step would be to clean up the project a little, and make Webpack update the
 
 ## Day 5 - Why this does not work?!?
 
-## #Uuh
+### #Uuh
 Finally, Hot Reload works \o/. There were lots of steps and back tracking. Here's what to do:
 
 ### Webpack configuration
