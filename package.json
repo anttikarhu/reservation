@@ -9,7 +9,9 @@
     "babel-loader": "^8.0.2",
     "webpack": "^4.39.0",
     "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.1"
+    "webpack-dev-server": "^3.7.1",
+    "react-hot-loader": "^4.12.10",
+    "@hot-loader/react-dom": "^16.8.6"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
@@ -21,9 +23,7 @@
   },
   "main": "webpack.config.js",
   "scripts": {
-    "webpack-start": "webpack-dev-server",
-    "webpack-watch": "webpack --watch -d",
-    "webpack-build": "webpack"
+    "start:dev": "webpack-dev-server"
   },
   "eslintConfig": {
     "extends": "react-app"

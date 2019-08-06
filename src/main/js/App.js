@@ -1,5 +1,7 @@
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import SomeModule from './SomeModule';
+import SomeModule2 from './SomeModule2';
 
 class App extends React.Component {
     constructor(props) {
@@ -21,7 +23,9 @@ class App extends React.Component {
         return (
             <div>
                 <header>
-                    <h1>Henkilön 123456-1234 ajanvaraukset</h1>
+                    <h1>Reservations for person 123456-1234</h1>
+                    <h2><SomeModule /></h2>
+                    <h2><SomeModule2 /></h2>
                 </header>
                 {this.state.appointments.map((a) => (
                     <div key={a.resource.id}>
@@ -34,7 +38,4 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <App/>,
-    document.getElementById('react')
-);
+export default hot(App);
