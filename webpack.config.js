@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-require('react-dom')
 
 module.exports = {
     mode: 'development',
@@ -13,11 +12,7 @@ module.exports = {
         headers: {
             'Access-Control-Allow-Origin': '*'
         },
-        hot: true,
-        stats: {
-            children: false, // Hide children information
-            maxModules: 0 // Set the maximum number of modules to be shown
-        }
+        hot: true
     },
     cache: true,
     output: {
@@ -38,10 +33,5 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()
-    ],
-    resolve: {
-        alias: {
-            'react-dom': '@hot-loader/react-dom'
-        }
-    }
+    ]
 };
