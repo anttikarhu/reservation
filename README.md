@@ -3,6 +3,7 @@
 ## Overview 
 
 Practise project for Spring Boot web application. It will be a FHIR appointment application.
+Sprint boot hosts the front files, and webpack uses Hot Reload for frontend. 
 
 ## Goals
 
